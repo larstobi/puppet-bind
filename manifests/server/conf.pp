@@ -81,6 +81,7 @@ define bind::server::conf (
   $forwarders         = [],
   $directory          = $bind::params::directory,
   $version            = undef,
+  $rootns_file        = $bind::params::rootns_file,
   $rfc1912_file       = $bind::params::rfc1912_file,
   $dump_file          = 'cache_dump.db',
   $statistics_file    = 'named_stats.txt',

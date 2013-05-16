@@ -91,7 +91,7 @@ logging {
 
 zone "." IN {
     type hint;
-    file "named.ca";
+    file "<%= @rootns_file %>";
 };
 
 <% if !@zones.empty? -%>
