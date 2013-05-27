@@ -79,7 +79,7 @@ define bind::server::conf (
   $listen_on_v6_port  = '53',
   $listen_on_v6_addr  = [ '::1' ],
   $forwarders         = [],
-  $directory          = '/var/named',
+  $directory          = $bind::params::directory,
   $version            = undef,
   $dump_file          = '/var/named/data/cache_dump.db',
   $statistics_file    = '/var/named/data/named_stats.txt',
