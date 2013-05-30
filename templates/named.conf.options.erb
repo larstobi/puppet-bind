@@ -5,7 +5,7 @@ options {
 <% if @ipv4_only == 'no' -%>
     listen-on-v6 port <%= @listen_on_v6_port %> { <%= @listen_on_v6_addr.join("; ") %> };
 <% end -%>
-<% if !@forwarders.empty? -%>
+<% if @forwarders && !@forwarders.empty? -%>
     forwarders { <%= @forwarders.join("; ") %>; };
 <% end -%>
     directory "<%= @directory %>";
@@ -21,20 +21,20 @@ options {
 <% if @memstatistics_file -%>
     memstatistics-file "<%= @memstatistics_file %>";
 <% end -%>
-<% if !@allow_query.empty? -%>
+<% if @allow_query && !@allow_query.empty? -%>
     allow-query { <%= @allow_query.join("; ") %>; };
 <% end -%>
-<% if !@allow_query_cache.empty? -%>
+<% if @allow_query_cache && !@allow_query_cache.empty? -%>
     allow-query-cache { <%= @allow_query_cache.join("; ") %>; };
 <% end -%>
     recursion <%= @recursion %>;
-<% if !@allow_recursion.empty? -%>
+<% if @allow_recursion && !@allow_recursion.empty? -%>
     allow-recursion { <%= @allow_recursion.join("; ") %>; };
 <% end -%>
-<% if !@allow_transfer.empty? -%>
+<% if @allow_transfer && !@allow_transfer.empty? -%>
     allow-transfer { <%= @allow_transfer.join("; ") %>; };
 <% end -%>
-<% if !@check_names.empty? -%>
+<% if @check_names && !@check_names.empty? -%>
 <% @check_names.each do |line| -%>
     check-names <%= line %>;
 <% end -%>

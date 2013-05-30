@@ -3,7 +3,7 @@
 // WARNING: Puppet managed, do not edit!
 //
 
-<% if !@acls.empty? -%>
+<% if @acls && !@acls.empty? -%>
 <% @acls.sort_by {|key, value| key}.each do |key,value| -%>
 acl <%= key %> {
 <% value.each do |line| -%>
@@ -13,7 +13,7 @@ acl <%= key %> {
 
 <% end -%>
 <% end -%>
-<% if !@masters.empty? -%>
+<% if @masters && !@masters.empty? -%>
 <% @masters.sort_by {|key, value| key}.each do |key,value| -%>
 masters <%= key %> {
 <% value.each do |line| -%>
