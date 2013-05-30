@@ -39,6 +39,9 @@ options {
     check-names <%= line %>;
 <% end -%>
 <% end -%>
+<% if @auth_nxdomain %>
+    auth-nxdomain <%= @auth_nxdomain%>;    # conform to RFC1035
+<% end -%>
 <% if @dnssec_enable -%>
     dnssec-enable <%= @dnssec_enable %>;
 <% end -%>
