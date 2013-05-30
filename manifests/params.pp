@@ -13,6 +13,8 @@ class bind::params {
       $directory         = '/var/named'
       $root_servers_file = 'named.ca'
       $includes          = ['/etc/named.rfc1912.zones']
+      $logging           = 'yes'
+      $logfile           = '/var/log/named/named.log'
     }
     'Debian',
     'Ubuntu': {
@@ -21,6 +23,8 @@ class bind::params {
       $binduser          = 'bind'
       $bindgroup         = 'bind'
       $directory         = '/var/cache/bind'
+      $logging           = 'no'
+      $logfile           = '/var/log/bind/named.log'
     }
     default: {
       $packagenameprefix = 'bind'
@@ -29,6 +33,8 @@ class bind::params {
       $bindgroup         = 'named'
       $directory         = '/var/named'
       $root_servers_file = 'named.ca'
+      $logging           = 'yes'
+      $logfile           = '/var/log/named/named.log'
     }
   }
 

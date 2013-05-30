@@ -24,10 +24,10 @@ masters <%= key %> {
 <% end -%>
 <% end -%>
 
-
+<% if @logging && @logging == 'yes' -%>
 logging {
     channel main_log {
-        file "/var/log/named/named.log" versions 3 size 5m;
+        file "<%= @logfile %>" versions 3 size 5m;
         severity info;
         print-time yes;
         print-severity yes;
@@ -40,7 +40,7 @@ logging {
         null;
     };
 };
-
+<% end -%>
 <% if @root_servers_file && !@root_servers_file.empty? -%>
 zone "." IN {
     type hint;
