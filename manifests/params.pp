@@ -10,6 +10,7 @@ class bind::params {
       $servicename       = 'named'
       $binduser          = 'root'
       $bindgroup         = 'named'
+      $conf_dir          = '/etc'
       $directory         = '/var/named'
       $root_servers_file = 'named.ca'
       $includes          = ['/etc/named.rfc1912.zones']
@@ -22,6 +23,7 @@ class bind::params {
       $servicename       = 'bind9'
       $binduser          = 'bind'
       $bindgroup         = 'bind'
+      $conf_dir          = '/etc/bind'
       $directory         = '/var/cache/bind'
       $logging           = 'no'
       $logfile           = '/var/log/bind/named.log'
@@ -31,6 +33,7 @@ class bind::params {
       $servicename       = 'named'
       $binduser          = 'root'
       $bindgroup         = 'named'
+      $conf_dir          = '/etc'
       $directory         = '/var/named'
       $root_servers_file = 'named.ca'
       $logging           = 'yes'
