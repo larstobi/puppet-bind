@@ -57,7 +57,7 @@ zone "<%= key %>" IN {
 
 <% end -%>
 <% end -%>
-<% if !@includes.empty? -%>
+<% if @includes && !@includes.empty? -%>
 <% @includes.each do |filename| -%>
 include "<%= filename %>";
 <% end -%>
