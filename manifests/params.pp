@@ -12,6 +12,7 @@ class bind::params {
       $bindgroup         = 'named'
       $directory         = '/var/named'
       $root_servers_file = 'named.ca'
+      $includes          = ['/etc/named.rfc1912.zones']
     }
     'Debian',
     'Ubuntu': {
