@@ -103,7 +103,7 @@ class bind::config (
   $initd_opt_file     = $bind::params::initd_opt_file,
   $initd_opt_templ    = $bind::params::initd_opt_templ,
 
-) inherits bind::params {
+) {
   File {
     notify  => Class['bind::service'],
   }

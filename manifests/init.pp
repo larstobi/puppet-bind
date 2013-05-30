@@ -18,7 +18,7 @@
 class bind (
   $chroot            = false,
   $packagenameprefix = $bind::params::packagenameprefix
-) inherits bind::params {
+) {
 
   # Main package and service
   $packagenamesuffix = $chroot ? {

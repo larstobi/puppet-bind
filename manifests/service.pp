@@ -2,7 +2,7 @@
 #
 class bind::service (
   $servicename = $bind::params::servicename
-) inherits bind::params {
+) {
 
   service { $servicename :
     require   => Class['bind::package'],
