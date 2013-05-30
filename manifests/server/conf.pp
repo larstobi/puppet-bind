@@ -98,7 +98,6 @@ define bind::server::conf (
   $includes           = $bind::params::includes,
 ) {
 
-  # Everything is inside a single template
   file { $title:
     notify  => Class['bind::service'],
     content => template('bind/named.conf.erb', 'bind/named.conf.options.erb'),
