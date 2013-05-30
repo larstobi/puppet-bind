@@ -46,7 +46,8 @@ options {
     dnssec-validation <%= @dnssec_validation %>;
 <% end -%>
     dnssec-lookaside <%= @dnssec_lookaside %>;
-
+<% if @bindkeys_file -%>
     /* Path to ISC DLV key */
-    bindkeys-file "/etc/named.iscdlv.key";
+    bindkeys-file "<%= @bindkeys_file %>";
+<% end -%>
 };

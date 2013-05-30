@@ -18,6 +18,7 @@ class bind::params {
       $logfile           = '/var/log/named/named.log'
       $dnssec_enable     = 'yes'
       $dnssec_validation = 'yes'
+      $bindkeys_file     = '/etc/named.iscdlv.key'
     }
     'Debian',
     'Ubuntu': {
