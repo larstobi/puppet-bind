@@ -27,6 +27,7 @@ class bind::params {
       $bindgroup         = 'bind'
       $conf_dir          = '/etc/bind'
       $directory         = '/var/cache/bind'
+      $includes          = ['/etc/bind/zones.rfc1918']
       $logging           = 'no'
       $logfile           = '/var/log/bind/named.log'
     }
