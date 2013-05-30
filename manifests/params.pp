@@ -11,6 +11,7 @@ class bind::params {
       $binduser          = 'root'
       $bindgroup         = 'named'
       $directory         = '/var/named'
+      $root_servers_file = 'named.ca'
     }
     'Debian',
     'Ubuntu': {
@@ -26,6 +27,7 @@ class bind::params {
       $binduser          = 'root'
       $bindgroup         = 'named'
       $directory         = '/var/named'
+      $root_servers_file = 'named.ca'
     }
   }
 

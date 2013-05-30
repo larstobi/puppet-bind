@@ -80,6 +80,7 @@ define bind::server::conf (
   $listen_on_v6_addr  = [ '::1' ],
   $forwarders         = [],
   $directory          = $bind::params::directory,
+  $root_servers_file  = $bind::params::root_servers_file,
   $version            = undef,
   $dump_file          = '/var/named/data/cache_dump.db',
   $statistics_file    = '/var/named/data/named_stats.txt',

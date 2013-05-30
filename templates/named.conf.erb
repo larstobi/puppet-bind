@@ -41,11 +41,12 @@ logging {
     };
 };
 
+<% if @root_servers_file && !@root_servers_file.empty? -%>
 zone "." IN {
     type hint;
-    file "named.ca";
+    file "<%= @root_servers_file %>";
 };
-
+<% end -%>
 <% if !@zones.empty? -%>
 <% @zones.sort_by {|key, value| key}.each do |key,value| -%>
 zone "<%= key %>" IN {
