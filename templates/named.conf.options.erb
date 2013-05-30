@@ -2,8 +2,8 @@ options {
 <% if @listen_on_port -%>
     listen-on port <%= @listen_on_port %> { <%= @listen_on_addr.join("; ") %>; };
 <% end -%>
-<% if @listen_on_v6_port -%>
-    listen-on-v6 port <%= @listen_on_v6_port %> { <%= @listen_on_v6_addr.join("; ") %>; };
+<% if @ipv4_only == 'no' -%>
+    listen-on-v6 port <%= @listen_on_v6_port %> { <%= @listen_on_v6_addr.join("; ") %> };
 <% end -%>
 <% if !@forwarders.empty? -%>
     forwarders { <%= @forwarders.join("; ") %>; };
