@@ -39,9 +39,12 @@ options {
     check-names <%= line %>;
 <% end -%>
 <% end -%>
-
+<% if @dnssec_enable -%>
     dnssec-enable <%= @dnssec_enable %>;
+<% end -%>
+<% if @dnssec_validation -%>
     dnssec-validation <%= @dnssec_validation %>;
+<% end -%>
     dnssec-lookaside <%= @dnssec_lookaside %>;
 
     /* Path to ISC DLV key */

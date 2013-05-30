@@ -16,6 +16,8 @@ class bind::params {
       $includes          = ['/etc/named.rfc1912.zones']
       $logging           = 'yes'
       $logfile           = '/var/log/named/named.log'
+      $dnssec_enable     = 'yes'
+      $dnssec_validation = 'yes'
     }
     'Debian',
     'Ubuntu': {
