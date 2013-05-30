@@ -100,6 +100,9 @@ class bind::config (
   $zones              = {},
   $logging            = $bind::params::logging,
   $includes           = $bind::params::includes,
+  $initd_opt_file     = $bind::params::initd_opt_file,
+  $initd_opt_templ    = $bind::params::initd_opt_templ,
+
 ) {
   File {
     notify  => Class['bind::service'],
@@ -120,6 +123,11 @@ class bind::config (
     mode    => '0770',
   }
 
+  file {
+    $initd_opt_file:
+      ensure => present,
+      content => template($initd_opt_templ);
+  }
 
   file {
     "${conf_dir}/named.conf.local":

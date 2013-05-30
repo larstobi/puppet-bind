@@ -1,0 +1,11 @@
+# This file is managed by Puppet.
+
+# run resolvconf?
+RESOLVCONF=no
+
+# startup options for the server
+<% if @ipv4_only -%>
+OPTIONS="-4 -u bind"
+<% else -%>
+OPTIONS="-u bind"
+<% end -%>
