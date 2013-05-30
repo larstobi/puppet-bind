@@ -47,7 +47,7 @@ zone "." IN {
     file "<%= @root_servers_file %>";
 };
 <% end -%>
-<% if !@zones.empty? -%>
+<% if @zones && !@zones.empty? -%>
 <% @zones.sort_by {|key, value| key}.each do |key,value| -%>
 zone "<%= key %>" IN {
 <% value.each do |line| -%>
