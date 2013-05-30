@@ -125,7 +125,7 @@ class bind::config (
 
   file {
     $initd_opt_file:
-      ensure => present,
+      ensure  => present,
       content => template($initd_opt_templ);
   }
 
