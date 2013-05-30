@@ -71,37 +71,64 @@
 #    }
 #  }
 #
-define bind::server::conf (
+class bind::config (
   $acls               = {},
   $masters            = {},
   $listen_on_port     = '53',
   $listen_on_addr     = [ '127.0.0.1' ],
+  $ipv4_only          = 'no',
+  $listen_on_v6       = 'yes',
   $listen_on_v6_port  = '53',
   $listen_on_v6_addr  = [ '::1' ],
   $forwarders         = [],
+  $conf_dir           = $bind::params::conf_dir,
   $directory          = $bind::params::directory,
   $root_servers_file  = $bind::params::root_servers_file,
   $version            = undef,
-  $dump_file          = '/var/named/data/cache_dump.db',
-  $statistics_file    = '/var/named/data/named_stats.txt',
-  $memstatistics_file = '/var/named/data/named_mem_stats.txt',
+  $dump_file          = 'cache_dump.db',
+  $statistics_file    = 'named_stats.txt',
+  $memstatistics_file = 'named_mem_stats.txt',
   $allow_query        = [ 'localhost' ],
   $allow_query_cache  = [],
   $recursion          = 'yes',
   $allow_recursion    = [],
   $allow_transfer     = [],
   $check_names        = [],
-  $dnssec_enable      = 'yes',
-  $dnssec_validation  = 'yes',
+  $dnssec_enable      = $bind::params::dnssec_enable,
+  $dnssec_validation  = $bind::params::dnssec_validation,
   $dnssec_lookaside   = 'auto',
   $zones              = {},
+  $logging            = $bind::params::logging,
   $includes           = $bind::params::includes,
 ) {
-
-  file { $title:
+  File {
     notify  => Class['bind::service'],
-    content => template('bind/named.conf.erb', 'bind/named.conf.options.erb'),
   }
+
+  # # We want a nice log file which the package doesn't provide a location for
+  # $bindlogdir = $chroot ? {
+  #   true  => '/var/named/chroot/var/log/named',
+  #   false => '/var/log/named',
+  # }
+  $logdir = '/var/log/bind'
+  $logfile = '/var/log/bind/named.log'
+  file { $logdir:
+    require => Class['bind::package'],
+    ensure  => directory,
+    owner   => $bind::params::binduser,
+    group   => $bind::params::bindgroup,
+    mode    => '0770',
+  }
+
+
+  file {
+    "${conf_dir}/named.conf.local":
+      content => template('bind/named.conf.erb');
+
+    "${conf_dir}/named.conf.options":
+      content => template('bind/named.conf.options.erb');
+  }
+
 
 }
 
